@@ -5,12 +5,12 @@ import React from 'react';
 
 const getData = async (category: string) => {
   try {
-    const res = await fetch(`http://full-stack-restaurant.vercel.app/api/products?cat=${category}`, {
+    const res = await fetch(`http://http://localhost:3000/api/products?cat=${category}`, {
       cache: 'no-store',
     });
     return res.json();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
