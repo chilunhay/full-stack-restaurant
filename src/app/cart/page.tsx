@@ -44,7 +44,7 @@ const CartPage = () => {
         {/* SINGLE ITEM */}
         {products.map((item) => (
           <div className="flex items-center justify-between mb-4" key={item.id}>
-            {item.img && <Image src={item.img} alt="" width={100} height={100} />}
+            {item.img && <Image src={item.img} alt="" width={70} height={70} />}
             <div className="">
               <h1 className="uppercase text-xl font-bold">
                 {item.title} x{item.quantity}
