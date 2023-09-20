@@ -56,7 +56,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${process.env.DEPLOY_URL}/success`,
+        return_url: 'https://vercel.com/chilunhay/full-stack-restaurant/success',
       },
     });
 

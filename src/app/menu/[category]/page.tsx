@@ -5,7 +5,7 @@ import React from 'react';
 
 const getData = async (category: string) => {
   try {
-    const res = await fetch(`${process.env.DEPLOY_URL}/api/products?cat=${category}`, {
+    const res = await fetch(`https://vercel.com/chilunhay/full-stack-restaurant/api/products?cat=${category}`, {
       cache: 'no-store',
     });
     return res.json();

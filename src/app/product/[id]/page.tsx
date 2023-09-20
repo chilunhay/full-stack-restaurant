@@ -5,7 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const getData = async (id: string) => {
-  const res = await fetch(`${process.env.DEPLOY_URL}/api/products/${id}`, {
+  const res = await fetch(`https://vercel.com/chilunhay/full-stack-restaurant/api/products/${id}`, {
     cache: 'no-store',
   });
 

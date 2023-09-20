@@ -19,7 +19,7 @@ const CartPage = () => {
       router.push('/login');
     } else {
       try {
-        const res = await fetch(`${process.env.DEPLOY_URL}/api/orders`, {
+        const res = await fetch(`https://vercel.com/chilunhay/full-stack-restaurant/api/orders`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

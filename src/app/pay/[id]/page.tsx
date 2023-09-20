@@ -15,7 +15,7 @@ const PayPage = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await fetch(`${process.env.DEPLOY_URL}/api/create-intent/${id}`, {
+        const res = await fetch(`https://vercel.com/chilunhay/full-stack-restaurant/api/create-intent/${id}`, {
           method: 'POST',
         });
         const data = await res.json();
