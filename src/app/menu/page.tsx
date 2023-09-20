@@ -1,21 +1,36 @@
 import { MenuType } from '@/types/types';
 import Link from 'next/link';
 import React from 'react';
+import useSWR from 'swr';
 
-const getData = async () => {
-  const res = await fetch('api/categories', {
-    cache: 'no-store',
-  });
+// const getData = async () => {
+//   const res = await fetch('api/categories', {
+//     cache: 'no-store',
+//   });
 
-  if (!res.ok) {
-    throw new Error('Failed!');
+//   if (!res.ok) {
+//     throw new Error('Failed!');
+//   }
+
+//   return res.json();
+// };
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const MenuPage = () => {
+  // const menu: MenuType = await getData();
+
+  //getting data and error
+
+  const { data, error } = useSWR('api/categories', fetcher);
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+  if (data) {
+    return data.json;
   }
 
-  return res.json();
-};
+  const menu: MenuType = data.json();
 
-const MenuPage = async () => {
-  const menu: MenuType = await getData();
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col md:flex-row items-center">
       {menu.map((category) => (
