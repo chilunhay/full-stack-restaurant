@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const getData = async () => {
-  const res = await fetch('www.api.example.com/api/categories', {
+  const res = await fetch('http://full-stack-restaurant.vercel.app/api/categories', {
     cache: 'no-store',
   });
 
