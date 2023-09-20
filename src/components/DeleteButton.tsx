@@ -18,7 +18,7 @@ const DeleteButton = ({ id }: { id: string }) => {
   }
 
   const handleDelete = async () => {
-    const res = await fetch(`https://vercel.com/chilunhay/full-stack-restaurant/api/products/${id}`, {
+    const res = await fetch(`https://full-stack-restaurant-iota.vercel.app/api/products/${id}`, {
       method: 'DELETE',
     });
 
