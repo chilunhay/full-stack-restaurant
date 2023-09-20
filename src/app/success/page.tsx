@@ -11,7 +11,7 @@ const SuccessPage = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await fetch(`https://full-stack-restaurant-iota.vercel.app/api/confirm/${payment_intent}`, {
+        await fetch(`${process.env.DEPLOY_URL}/api/confirm/${payment_intent}`, {
           method: 'PUT',
         });
         setTimeout(() => {

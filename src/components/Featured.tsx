@@ -4,7 +4,7 @@ import React from 'react';
 
 const getData = async () => {
   try {
-    const res = await fetch('https://full-stack-restaurant-iota.vercel.app/api/products', {
+    const res = await fetch(`${process.env.DEPLOY_URL}/api/products`, {
       cache: 'no-store',
     });
 
