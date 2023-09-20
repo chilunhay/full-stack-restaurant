@@ -1,16 +1,16 @@
-import DeleteButton from "@/components/DeleteButton";
-import Price from "@/components/Price";
-import { ProductType } from "@/types/types";
-import Image from "next/image";
-import React from "react";
+import DeleteButton from '@/components/DeleteButton';
+import Price from '@/components/Price';
+import { ProductType } from '@/types/types';
+import Image from 'next/image';
+import React from 'react';
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
-    cache: "no-store",
+  const res = await fetch(`https://full-stack-restaurant-iota.vercel.app/api/products/${id}`, {
+    cache: 'no-store',
   });
 
   if (!res.ok) {
-    throw new Error("Failed!");
+    throw new Error('Failed!');
   }
 
   return res.json();
@@ -24,12 +24,7 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
       {/* IMAGE CONTAINER */}
       {singleProduct.img && (
         <div className="relative w-full h-1/2 md:h-[70%]">
-          <Image
-            src={singleProduct.img}
-            alt=""
-            className="object-contain"
-            fill
-          />
+          <Image src={singleProduct.img} alt="" className="object-contain" fill />
         </div>
       )}
       {/* TEXT CONTAINER */}

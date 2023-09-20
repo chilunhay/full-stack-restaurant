@@ -1,9 +1,9 @@
-"use client";
-import { useCartStore } from "@/utils/store";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+'use client';
+import { useCartStore } from '@/utils/store';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
 
 const CartPage = () => {
   const { products, totalItems, totalPrice, removeFromCart } = useCartStore();
@@ -16,21 +16,21 @@ const CartPage = () => {
 
   const handleCheckout = async () => {
     if (!session) {
-      router.push("/login");
+      router.push('/login');
     } else {
       try {
-        const res = await fetch("http://localhost:3000/api/orders", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        const res = await fetch('https://full-stack-restaurant-iota.vercel.app/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             price: totalPrice,
             products,
-            status: "Not Paid!",
+            status: 'Not Paid!',
             userEmail: session.user.email,
           }),
         });
-        const data =await res.json()
-        router.push(`/pay/${data.id}`)
+        const data = await res.json();
+        router.push(`/pay/${data.id}`);
       } catch (err) {
         console.log(err);
       }
@@ -44,9 +44,7 @@ const CartPage = () => {
         {/* SINGLE ITEM */}
         {products.map((item) => (
           <div className="flex items-center justify-between mb-4" key={item.id}>
-            {item.img && (
-              <Image src={item.img} alt="" width={100} height={100} />
-            )}
+            {item.img && <Image src={item.img} alt="" width={100} height={100} />}
             <div className="">
               <h1 className="uppercase text-xl font-bold">
                 {item.title} x{item.quantity}
@@ -54,10 +52,7 @@ const CartPage = () => {
               <span>{item.optionTitle}</span>
             </div>
             <h2 className="font-bold">${item.price}</h2>
-            <span
-              className="cursor-pointer"
-              onClick={() => removeFromCart(item)}
-            >
+            <span className="cursor-pointer" onClick={() => removeFromCart(item)}>
               X
             </span>
           </div>
@@ -82,10 +77,7 @@ const CartPage = () => {
           <span className="">TOTAL(INCL. VAT)</span>
           <span className="font-bold">${totalPrice}</span>
         </div>
-        <button
-          className="bg-red-500 text-white p-3 rounded-md w-1/2 self-end"
-          onClick={handleCheckout}
-        >
+        <button className="bg-red-500 text-white p-3 rounded-md w-1/2 self-end" onClick={handleCheckout}>
           CHECKOUT
         </button>
       </div>
