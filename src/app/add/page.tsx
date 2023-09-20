@@ -76,6 +76,7 @@ const AddPage = () => {
 
     const res = await fetch('https://api.cloudinary.com/v1_1/chilunhay/image/upload', {
       method: 'POST',
+      headers: { 'Content-Type': 'multipart/form-data' },
       body: data,
     });
 
